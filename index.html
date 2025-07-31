@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>aminoxix - software engineer</title>
+    <style>
+      body {
+        background-color: #000;
+        color: #33ff33;
+        font-family: "Courier New", Courier, monospace;
+        font-size: 1.2rem;
+        padding: 40px;
+        white-space: pre-wrap;
+      }
+
+      .blink {
+        animation: blink 1s step-start infinite;
+      }
+
+      @keyframes blink {
+        50% {
+          opacity: 0;
+        }
+      }
+
+      .terminal-output {
+        max-width: 800px;
+        margin: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="terminal-output" id="terminal"></div>
+
+    <script>
+      const lines = [
+        "hello world!",
+        "",
+        "this is anshumaan (aka aminos),",
+        "software engineer ::",
+        "proving specialty in web + frontend.",
+        "",
+        "projects loading...",
+        "err, check github.com/aminoxix",
+      ];
+
+      let i = 0;
+      const terminal = document.getElementById("terminal");
+
+      function typeLine() {
+        if (i < lines.length) {
+          const line = document.createElement("div");
+          line.textContent = lines[i];
+          terminal.appendChild(line);
+          i++;
+          setTimeout(typeLine, 500);
+        } else {
+          const cursor = document.createElement("span");
+          cursor.className = "blink";
+          cursor.textContent = "█";
+          terminal.appendChild(cursor);
+        }
+      }
+
+      typeLine();
+    </script>
+  </body>
+</html>
