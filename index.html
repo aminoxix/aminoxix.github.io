@@ -14,6 +14,15 @@
         white-space: pre-wrap;
       }
 
+      a {
+        color: #33ff33;
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
       .blink {
         animation: blink 1s step-start infinite;
       }
@@ -42,7 +51,7 @@
         "proving specialty in web + frontend.",
         "",
         "projects loading...",
-        "err, check github.com/aminoxix",
+        "err, check github",
       ];
 
       let i = 0;
@@ -51,7 +60,16 @@
       function typeLine() {
         if (i < lines.length) {
           const line = document.createElement("div");
-          line.textContent = lines[i];
+          if (i === 7) {
+            line.textContent = "err, check ";
+            const link = document.createElement("a");
+            link.href = "https://github.com/aminoxix";
+            link.target = "_blank";
+            link.textContent = "github.com/aminoxix";
+            line.appendChild(link);
+          } else {
+            line.textContent = lines[i];
+          }
           terminal.appendChild(line);
           i++;
           setTimeout(typeLine, 500);
